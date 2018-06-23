@@ -1,18 +1,7 @@
-body{
+// import var.less
+@import "../../src/var";
 
-  background-color: black;
-
-}
-
-
-@media (max-width: 350px) {
-  body{
-    background-color: blue;
-  }
-
-}
-
-.container{
+.container {
   background-color: white;
   margin-top: 15%;
   width: 350px;
@@ -21,40 +10,58 @@ body{
 
 }
 
+//style for label inside input tag
 .holder {
   position: relative;
+
+  label {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    padding: 7px;
+    padding-left: 14px;
+    font-style: italic;
+  }
+
+  input {
+
+    width: 100%;
+    height: 60px;
+    padding-top: 30px;
+    -moz-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);;
+    -webkit-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+
+    &:focus {
+      border: @border;
+      -moz-box-shadow: 0 15px 10px -15px @borderColor;
+      -webkit-box-shadow: 0 15px 10px -15px @borderColor;
+      box-shadow: 0 15px 10px -15px @borderColor;
+    }
+  }
 }
 
-.holder label {
-  position: absolute;
-  width: 100%;
-  height: 20px;
-  padding: 7px;
-  padding-left: 14px;
+button {
+  .submitButton(@float: right)
 }
 
-.holder input {
-
-  width: 100%;
-  height: 60px;
-  padding-top: 30px ;
+//float select tag with suggestions emails
+select {
+  float: left;
 }
 
-label{
-  font-style: italic;
-}
-
-input{
-  font-weight: bold;
-}
-
-button{
+//style for error messages
+em {
   float: right;
-  padding-right: 0;
-  background: midnightblue !important;
+  color: @err;
+  padding-left: 10px;
+  position: absolute
+}
 
-  -moz-box-shadow:    inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow:         inset 0 0 10px #000000;
-
+//for mobile view
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
 }

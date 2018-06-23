@@ -1,0 +1,20 @@
+
+//  colors
+
+@err : red;
+@borderColor: black;
+@buttonColor: midnightblue;
+
+
+// mixins
+
+@border : 1px solid @borderColor;
+
+//@floatRight: right;
+
+.submitButton(@float : left){
+  float: @float;
+  padding-right: 0;
+  background: @buttonColor !important;
+}
+

@@ -1,11 +1,3 @@
-body {
-  background-color: black;
-}
-@media (max-width: 350px) {
-  body {
-    background-color: blue;
-  }
-}
 .container {
   background-color: white;
   margin-top: 15%;
@@ -22,24 +14,40 @@ body {
   height: 20px;
   padding: 7px;
   padding-left: 14px;
+  font-style: italic;
 }
 .holder input {
   width: 100%;
   height: 60px;
-  padding-top: 30px ;
-}
-label {
-  font-style: italic;
-}
-input {
+  padding-top: 30px;
+  -moz-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
   font-weight: bold;
+}
+.holder input:focus {
+  border: 1px solid black;
+  -moz-box-shadow: 0 15px 10px -15px black;
+  -webkit-box-shadow: 0 15px 10px -15px black;
+  box-shadow: 0 15px 10px -15px black;
 }
 button {
   float: right;
   padding-right: 0;
   background: midnightblue !important;
-  -moz-box-shadow: inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow: inset 0 0 10px #000000;
+}
+select {
+  float: left;
+}
+em {
+  float: right;
+  color: red;
+  padding-left: 10px;
+  position: absolute;
+}
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=app.component.css.map */

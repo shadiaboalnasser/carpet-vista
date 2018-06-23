@@ -1,21 +1,61 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <form>
+  <form [formGroup]="testForm"
+        (ngSubmit)="onSubmit(testForm.value)"
+        autocomplete="off"
+        novalidate>
     <div class="holder form-group shadow-sm">
-      <label for="email">E-mail</label>
-      <input type="email" class="form-control" id="email" required>
+      <label for="email">E-mail
+
+        <!--show message require if empty email-->
+        <em *ngIf="testForm.controls?.email?.errors?.required && (testForm.controls.email?.touched || mouseOver)">Required</em>
+
+        <!--show message invalid if invalid email-->
+        <em *ngIf="testForm.controls?.email?.errors?.email && (testForm.controls.email?.touched || mouseOver)">
+          Invalid Email</em>
+
+      </label>
+      <input type="email"
+             class="form-control"
+             formControlName="email"
+             name="email"
+             required
+             id="email">
     </div>
     <div class="holder form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required>
+      <label for="name">Name
+
+        <!--show message require if empty name-->
+        <em *ngIf="testForm.controls?.name?.invalid && (testForm.controls.name?.touched || mouseOver)">Required</em>
+      </label>
+      <input type="text"
+             class="form-control"
+             formControlName="name"
+             name="name"
+             id="name">
     </div>
     <div class="holder form-group">
       <label for="phone">Phone(optional)</label>
-      <input type="tel" class="form-control" id="phone">
+      <input type="tel"
+             class="form-control"
+             id="phone"
+             formControlName="phone"
+             name="phone">
     </div>
 
-    <button class="btn btn-primary">SEND<img src="images/icons8-forward-50.png" style="width: 22px"></button>
+    <!--show select tag with suggestions emails-->
+    <div *ngIf="outputs">Did you mean:</div>
+    <select id="selectSuggest" *ngIf="outputs" title="select" (click)="changeEmail()">
+      <option *ngFor="let output of outputs">
+        {{suggestions.user}}@{{output.domain}}
+      </option>
+    </select>
 
+    <!--show require message for email and name if hover submit button-->
+    <span (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+      <button class="btn btn-primary" type="submit" [disabled]="!testForm?.valid">SEND
+        <img src="../assets/images/icons8-forward-50.png" style="width: 22px">
+      </button>
+    </span>
   </form>
 </div>
 
